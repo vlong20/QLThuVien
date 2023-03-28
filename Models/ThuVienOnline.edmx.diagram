@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14aaa9ac406f4a0c84d19b77568bf39d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="thuvienModel.ChiTietPhieuMuon" Width="1.5" PointX="10.875" PointY="0.75" />
+        <EntityTypeShape EntityType="thuvienModel.DocGia" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="thuvienModel.LoaiDG" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="thuvienModel.LoaiTK" Width="1.5" PointX="1.5" PointY="10.25" />
+        <EntityTypeShape EntityType="thuvienModel.LuaChon" Width="1.5" PointX="5.875" PointY="4.625" />
+        <EntityTypeShape EntityType="thuvienModel.Nguoi" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="thuvienModel.NhanVien" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="thuvienModel.PhieuMuon" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="thuvienModel.PhieuPhat" Width="1.5" PointX="10.125" PointY="3.5" />
+        <EntityTypeShape EntityType="thuvienModel.Sach" Width="1.5" PointX="12.5" PointY="5.375" />
+        <EntityTypeShape EntityType="thuvienModel.TaiKhoan" Width="1.5" PointX="2.25" PointY="6.5" />
+        <EntityTypeShape EntityType="thuvienModel.TheLoai" Width="1.5" PointX="9.125" PointY="6.125" />
+        <EntityTypeShape EntityType="thuvienModel.TheThuVien" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="thuvienModel.TrangThai" Width="1.5" PointX="5.125" PointY="6.875" />
+        <AssociationConnector Association="thuvienModel.MaPM_FK" />
+        <AssociationConnector Association="thuvienModel.MaSach_FK" />
+        <AssociationConnector Association="thuvienModel.LoaiDG_FK" />
+        <AssociationConnector Association="thuvienModel.MaDG_FK" />
+        <AssociationConnector Association="thuvienModel.MaNguoi_FK2" />
+        <AssociationConnector Association="thuvienModel.LoaiTK_FK" />
+        <AssociationConnector Association="thuvienModel.Luachon_FK" />
+        <AssociationConnector Association="thuvienModel.MaNguoi1_FK" />
+        <AssociationConnector Association="thuvienModel.MaNV_FK" />
+        <AssociationConnector Association="thuvienModel.TaiKhoan1_FK" />
+        <AssociationConnector Association="thuvienModel.MaDG_FK1" />
+        <AssociationConnector Association="thuvienModel.MaPM_FK1" />
+        <AssociationConnector Association="thuvienModel.Trangthai_FK" />
+        <AssociationConnector Association="thuvienModel.MaTL_FK" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

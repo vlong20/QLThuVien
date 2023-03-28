@@ -1,0 +1,321 @@
+﻿@model IEnumerable<THPTPhuBinh.Models.Sach>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống thư viện THPT Phú Bình</title>
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/normalize.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/header_menu.css">
+    <link rel="stylesheet" href="./assets/css/container.css">
+    <link rel="stylesheet" href="./assets/css/addbook.css">
+    <style>
+        .category__item {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .item__function {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .item__function-icon {
+            margin-left: 2em;
+        }
+
+        .book__menu-item{
+            text-decoration:none;
+            color:var(--text-color);
+        }
+        #search_btn:hover{
+            cursor:pointer;
+        }
+        #system-item1 {
+            display: none;
+        }
+
+        #system-item2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <script src="./assets/js/addbook.js"></script>
+    <div class="app">
+        <div class="header">
+            <div class="grid">
+                <!-- Header with search -->
+                <div class="header-with-search">
+                    <div class="header__logo">
+                        <img src="./assets/img/logo.png" alt="" class="header__logo-img">
+                        <h1 class="header__logo-title">THƯ VIỆN<br>TRƯỜNG THPT PHÚ BÌNH</h1>
+                    </div>
+
+                    <div class="header__search">
+                        <input type="text" class="auth-form__input search-input" id="searchString" name="" placeholder="Tìm kiếm">
+                        <i class="fa-solid fa-magnifying-glass search-icon" id="search_btn"></i>
+                        <script>
+                            var search = document.getElementById("search_btn");
+
+
+                            search.addEventListener("click", function () {
+
+                                var searchString = document.getElementById("searchString").value;
+                                let link = "/Sach?searchString=" + searchString;
+                                console.log(searchString);
+                                window.location.href = link;
+                            });
+                        </script>
+                    </div>
+
+                    <a id="header__menu">
+                        <i class="fa-solid fa-bars menu_icon"></i>
+                        <ul class="function">
+                            <li class="substitute" style="height: 1em;"></li>
+
+                            <li class="item1 item">
+                                <i class="fa-solid fa-circle-plus icon-addbook"></i>
+                                <input onclick="wrapper_show()" type="button" class="button" value="Thêm sách">
+                            </li>
+                            <li class="item2 item"></li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="grid container__content">
+                <div class="container__category" style="border-right: var(--border-color) solid 1px;">
+                    <ul class="category__list">
+                        <li>
+                            <a href="~/Sach" class="category__item">
+                                <i class="fa-solid fa-book icon-category"></i>
+                                Quản lý sách
+                            </a>
+                            <div class="category__item">
+                                <i class="fa-solid fa-chevron-right icon-category item__function-icon"></i>
+                                @Html.ActionLink("Thêm sách", "Create", "", new { @class = "item__function" })
+                            </div>
+
+                        </li>
+                        <li>
+                            <a href="~/TheLoai" class="category__item">
+                                <i class="fa-solid fa-bookmark icon-category"></i>
+                                Quản lý thể loại
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/DocGia" class="category__item">
+                                <i class="fa-solid fa-user icon-category"></i>
+                                Quản lý độc giả
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/PhieuMuon" class="category__item">
+                                <i class="fa-solid fa-cart-shopping icon-category"></i>
+                                Quản lý mượn/trả
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="~/Sach" class="category__item">
+                                <i class="fa-solid fa-chart-line icon-category"></i>
+                                Thống kê
+                            </a>
+                        </li>
+                        @if (Session["LoaiTK"].ToString() == "1")
+                        {
+                            <li id="system-btn">
+                                <div class="category__item" style="user-select: none;">
+
+                                    <i class="fa-solid fa-gear icon-category"></i>
+                                    Quản lý hệ thống
+                                </div>
+                            </li>
+                            <li id="system-item1">
+                                <a href="~/NhanVien" class="category__item">
+                                    <i class="fa-solid fa-users icon-category"></i>
+                                    Quản lý nhân viên
+                                </a>
+                            </li>
+
+                            <li id="system-item2">
+                                <a href="~/TaiKhoan" class="category__item">
+                                    <i class="fa-solid fa-street-view icon-category"></i>
+
+                                    Quản lý tài khoản
+                                </a>
+                            </li>
+
+                        }
+
+                    </ul>
+                    <script>
+                        var flag = 0;
+                        var btn_system = document.getElementById("system-btn");
+                        var item_system1 = document.getElementById("system-item1");
+                        var item_system2 = document.getElementById("system-item2");
+
+                        btn_system.addEventListener('click', function () {
+                            if (flag == 0) {
+                                item_system1.style.display = "flex";
+                                item_system2.style.display = "flex";
+                                flag = 1;
+                            } else {
+                                item_system1.style.display = "none";
+                                item_system2.style.display = "none";
+                                flag = 0;
+                            }
+                        });
+                    </script>
+                </div>
+
+                <div class="container__books">
+                    <ul class="header__books">
+
+
+                        <li class="header__book-item-Id" style="width:8%">
+                            @Html.DisplayNameFor(model => model.MaSach)
+                        </li>
+
+                        <li class="header__book-item-Name" style="width:20%">
+                            @Html.DisplayNameFor(model => model.TenSach)
+                        </li>
+
+                        <li class="header__book-item-Author" style="width:14%">
+                            @Html.DisplayNameFor(model => model.TenTG)
+                        </li>
+
+                        <li class="header__book-item-Cate"  style="width:10%">
+                            @Html.DisplayNameFor(model => model.TheLoai.TenTL)
+                        </li>
+
+                        <li class="header__book-item-Year"  style="width:8%">
+                            @Html.DisplayNameFor(model => model.SoLuong)
+                        </li>
+                        <li class="header__book-item-Year"  style="width:8%">
+                            @Html.DisplayNameFor(model => model.SoLuongTT)
+                        </li>
+
+                        <li class="header__book-item-Menu"  style="width:18%">
+                            Thao tác
+                        </li>
+                    </ul>
+                    <div id="container__list">
+                        <script>
+                            let hight = screen.availHeight;
+                            hight = hight - 190;
+                            let container__list = document.getElementById("container__list");
+                            console.log(hight);
+                            container__list.style.height = hight.toString() + "px";
+                            container__list.style.overflow = "auto";
+                        </script>
+
+
+
+                        <ul class="book__list">
+                            @foreach (var item in Model)
+                            {
+                                <li class="book__item">
+
+                                    <h1 class="book__id" style="width:8%"> @Html.DisplayFor(modelItem => item.MaSach)</h1>
+                                    <p class="book__name" style="width:20%"> @Html.DisplayFor(modelItem => item.TenSach)</p>
+                                    <p class="book__author" style="width:14%"> @Html.DisplayFor(modelItem => item.TenTG)</p>
+                                    <p class="book__cate" style="width:10%"> @Html.DisplayFor(modelItem => item.TheLoai.TenTL)</p>
+                                    <p class="book__year" style="width:8%"> @Html.DisplayFor(modelItem => item.SoLuong)</p>
+                                    <p class="book__year" style="width:8%"> @Html.DisplayFor(modelItem => item.SoLuongTT)</p>
+                                    <ul class="book__menu" style="width:18%">
+                                        <li class="book__menu-item">@Html.ActionLink("Sửa", "Edit", new { id = item.MaSach },new { @class = "book__menu-item" })</li>
+                                        <li class="book__menu-item">@Html.ActionLink("Xóa", "Delete", new { id = item.MaSach }, new { @class = "book__menu-item" })</li>
+                                    </ul>
+                                </li>
+                            }
+
+
+
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer"></div>
+        </div>
+        <!--Thêm sách-->
+        <div id="wrapper">
+            <!-- Modal layout -->
+            <div class="modal">
+                <div class="modal__overlay">
+
+                </div>
+                <div class="modal__body">
+                    <!-- Add a book form -->
+                    <div class="book__add">
+                        <div class="header">
+                            <h3>Thêm sách</h3>
+                        </div>
+                        <div class="container">
+                            <ul>
+                                <li class="item">
+                                    <p class="item__text">Tên sách</p>
+                                    <input type="text" class="search-box">
+                                </li>
+                                <li class="item">
+                                    <p class="item__text">Tác giả</p>
+                                    <input type="text" class="search-box">
+                                </li>
+                                <li class="item">
+                                    <p class="item__text">Thể loại</p>
+                                    <input type="text" class="search-box">
+                                </li>
+                                <li class="item">
+                                    <p class="item__text">Năm xuất bản</p>
+                                    <input type="text" class="search-box">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer">
+                            <input type="button" onclick="back_to_index()" value="Trở lại" class="footer__btn cancel__button">
+                            <input type="button" onclick="show()" class="footer__btn submit__button" value="Submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Return submit pop-up-->
+            <div id="book__add__submit__pop-up">
+                <div class="modal">
+                    <div class="modal__overlay"></div>
+                    <div class="modal__body">
+                        <!-- <div class="fail"></div> -->
+                        <div class="success">
+                            <div class="pop-up__item text">Thành công!</div>
+                            <button onclick="window.location.href='./index.html'" class="pop-up__item button">Quay lại</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

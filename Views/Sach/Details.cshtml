@@ -1,0 +1,66 @@
+﻿@model THPTPhuBinh.Models.Sach
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Sach</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TenSach)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TenSach)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TenTG)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TenTG)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SoLuong)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SoLuong)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SoLuongTT)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SoLuongTT)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TheLoai.TenTL)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TheLoai.TenTL)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaSach }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

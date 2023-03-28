@@ -1,0 +1,42 @@
+﻿@model THPTPhuBinh.Models.TaiKhoan
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>TaiKhoan</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LoaiTK1.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LoaiTK1.name)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.TaiKhoan1 }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

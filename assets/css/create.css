@@ -1,0 +1,40 @@
+.title{
+    font-size: 24px;
+    padding-block-start: 1em;
+    padding-block-end: 1em;
+    padding-inline-start: 8em;
+    margin: 0;
+    color: var(--white-color);
+    background: var(--primary-color);
+}
+
+.form-group{
+    margin-inline-start: 10em;
+    position: relative;
+    display: grid;
+    grid-template-columns: 10em auto;
+    font-size: 18px;
+    height: 3em;
+    padding: 0;
+}
+.form-control{
+    width: 35em;
+    font-size: 18px;
+}
+.input-box{
+    margin-top: -5px;
+}
+.type{
+    width: 10em;
+}
+.back-btn{
+    width: 10em;
+    margin-left: 10em;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+}
+.submit-btn{
+    border: 1px solid var(--border-color);
+    color: var(--white-color);
+    background: var(--primary-color);
+}

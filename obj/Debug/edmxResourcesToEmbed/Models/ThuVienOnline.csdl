@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="thuvienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="thuvienEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="CreateAccount">
+      <Parameter Name="IdAccount" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Type" Mode="In" Type="Int32" />
+      <Parameter Name="IdStaff" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Birth" Mode="In" Type="DateTime" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="ChiTietPhieuMuons" EntityType="thuvienModel.ChiTietPhieuMuon" />
+    <EntitySet Name="DocGias" EntityType="thuvienModel.DocGia" />
+    <EntitySet Name="LoaiDGs" EntityType="thuvienModel.LoaiDG" />
+    <EntitySet Name="LoaiTKs" EntityType="thuvienModel.LoaiTK" />
+    <EntitySet Name="LuaChons" EntityType="thuvienModel.LuaChon" />
+    <EntitySet Name="Nguois" EntityType="thuvienModel.Nguoi" />
+    <EntitySet Name="NhanViens" EntityType="thuvienModel.NhanVien" />
+    <EntitySet Name="PhieuMuons" EntityType="thuvienModel.PhieuMuon" />
+    <EntitySet Name="PhieuPhats" EntityType="thuvienModel.PhieuPhat" />
+    <EntitySet Name="Saches" EntityType="thuvienModel.Sach" />
+    <EntitySet Name="TaiKhoans" EntityType="thuvienModel.TaiKhoan" />
+    <EntitySet Name="TheLoais" EntityType="thuvienModel.TheLoai" />
+    <EntitySet Name="TheThuViens" EntityType="thuvienModel.TheThuVien" />
+    <EntitySet Name="TrangThais" EntityType="thuvienModel.TrangThai" />
+    <AssociationSet Name="MaPM_FK" Association="thuvienModel.MaPM_FK">
+      <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+      <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuons" />
+    </AssociationSet>
+    <AssociationSet Name="MaSach_FK" Association="thuvienModel.MaSach_FK">
+      <End Role="Sach" EntitySet="Saches" />
+      <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuons" />
+    </AssociationSet>
+    <AssociationSet Name="LoaiDG_FK" Association="thuvienModel.LoaiDG_FK">
+      <End Role="LoaiDG" EntitySet="LoaiDGs" />
+      <End Role="DocGia" EntitySet="DocGias" />
+    </AssociationSet>
+    <AssociationSet Name="MaDG_FK" Association="thuvienModel.MaDG_FK">
+      <End Role="DocGia" EntitySet="DocGias" />
+      <End Role="TheThuVien" EntitySet="TheThuViens" />
+    </AssociationSet>
+    <AssociationSet Name="MaNguoi_FK2" Association="thuvienModel.MaNguoi_FK2">
+      <End Role="Nguoi" EntitySet="Nguois" />
+      <End Role="DocGia" EntitySet="DocGias" />
+    </AssociationSet>
+    <AssociationSet Name="LoaiTK_FK" Association="thuvienModel.LoaiTK_FK">
+      <End Role="LoaiTK" EntitySet="LoaiTKs" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+    <AssociationSet Name="Luachon_FK" Association="thuvienModel.Luachon_FK">
+      <End Role="LuaChon" EntitySet="LuaChons" />
+      <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+    </AssociationSet>
+    <AssociationSet Name="MaNguoi1_FK" Association="thuvienModel.MaNguoi1_FK">
+      <End Role="Nguoi" EntitySet="Nguois" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="MaNV_FK" Association="thuvienModel.MaNV_FK">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+    </AssociationSet>
+    <AssociationSet Name="TaiKhoan1_FK" Association="thuvienModel.TaiKhoan1_FK">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="NhanVien" EntitySet="NhanViens" />
+    </AssociationSet>
+    <AssociationSet Name="MaDG_FK1" Association="thuvienModel.MaDG_FK1">
+      <End Role="TheThuVien" EntitySet="TheThuViens" />
+      <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+    </AssociationSet>
+    <AssociationSet Name="MaPM_FK1" Association="thuvienModel.MaPM_FK1">
+      <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+      <End Role="PhieuPhat" EntitySet="PhieuPhats" />
+    </AssociationSet>
+    <AssociationSet Name="Trangthai_FK" Association="thuvienModel.Trangthai_FK">
+      <End Role="TrangThai" EntitySet="TrangThais" />
+      <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+    </AssociationSet>
+    <AssociationSet Name="MaTL_FK" Association="thuvienModel.MaTL_FK">
+      <End Role="TheLoai" EntitySet="TheLoais" />
+      <End Role="Sach" EntitySet="Saches" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ChiTietPhieuMuon">
+    <Key>
+      <PropertyRef Name="MaCT" />
+    </Key>
+    <Property Name="MaCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaPM" Type="Int32" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="MaSach" Type="Int32" />
+    <NavigationProperty Name="PhieuMuon" Relationship="thuvienModel.MaPM_FK" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
+    <NavigationProperty Name="Sach" Relationship="thuvienModel.MaSach_FK" FromRole="ChiTietPhieuMuon" ToRole="Sach" />
+  </EntityType>
+  <EntityType Name="DocGia">
+    <Key>
+      <PropertyRef Name="MaDG" />
+    </Key>
+    <Property Name="MaDG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgheNghiep" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LoaiDG" Type="Int32" Nullable="false" />
+    <Property Name="MaNguoi" Type="Int32" />
+    <NavigationProperty Name="LoaiDG1" Relationship="thuvienModel.LoaiDG_FK" FromRole="DocGia" ToRole="LoaiDG" />
+    <NavigationProperty Name="TheThuVien" Relationship="thuvienModel.MaDG_FK" FromRole="DocGia" ToRole="TheThuVien" />
+    <NavigationProperty Name="Nguoi" Relationship="thuvienModel.MaNguoi_FK2" FromRole="DocGia" ToRole="Nguoi" />
+  </EntityType>
+  <EntityType Name="LoaiDG">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DocGias" Relationship="thuvienModel.LoaiDG_FK" FromRole="LoaiDG" ToRole="DocGia" />
+  </EntityType>
+  <EntityType Name="LoaiTK">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaiKhoans" Relationship="thuvienModel.LoaiTK_FK" FromRole="LoaiTK" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="LuaChon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuMuons" Relationship="thuvienModel.Luachon_FK" FromRole="LuaChon" ToRole="PhieuMuon" />
+  </EntityType>
+  <EntityType Name="Nguoi">
+    <Key>
+      <PropertyRef Name="MaNguoi" />
+    </Key>
+    <Property Name="MaNguoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTen" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sdt" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="DocGias" Relationship="thuvienModel.MaNguoi_FK2" FromRole="Nguoi" ToRole="DocGia" />
+    <NavigationProperty Name="NhanViens" Relationship="thuvienModel.MaNguoi1_FK" FromRole="Nguoi" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaNguoi" Type="Int32" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Nguoi" Relationship="thuvienModel.MaNguoi1_FK" FromRole="NhanVien" ToRole="Nguoi" />
+    <NavigationProperty Name="PhieuMuons" Relationship="thuvienModel.MaNV_FK" FromRole="NhanVien" ToRole="PhieuMuon" />
+    <NavigationProperty Name="TaiKhoan1" Relationship="thuvienModel.TaiKhoan1_FK" FromRole="NhanVien" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="PhieuMuon">
+    <Key>
+      <PropertyRef Name="MaPM" />
+    </Key>
+    <Property Name="MaPM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDG" Type="Int32" />
+    <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NgayMuon" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NgayTra" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LuaChon" Type="Int32" Nullable="false" />
+    <Property Name="TrangThai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChiTietPhieuMuons" Relationship="thuvienModel.MaPM_FK" FromRole="PhieuMuon" ToRole="ChiTietPhieuMuon" />
+    <NavigationProperty Name="LuaChon1" Relationship="thuvienModel.Luachon_FK" FromRole="PhieuMuon" ToRole="LuaChon" />
+    <NavigationProperty Name="NhanVien" Relationship="thuvienModel.MaNV_FK" FromRole="PhieuMuon" ToRole="NhanVien" />
+    <NavigationProperty Name="TheThuVien" Relationship="thuvienModel.MaDG_FK1" FromRole="PhieuMuon" ToRole="TheThuVien" />
+    <NavigationProperty Name="PhieuPhats" Relationship="thuvienModel.MaPM_FK1" FromRole="PhieuMuon" ToRole="PhieuPhat" />
+    <NavigationProperty Name="TrangThai1" Relationship="thuvienModel.Trangthai_FK" FromRole="PhieuMuon" ToRole="TrangThai" />
+  </EntityType>
+  <EntityType Name="PhieuPhat">
+    <Key>
+      <PropertyRef Name="MaPP" />
+    </Key>
+    <Property Name="MaPP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaPM" Type="Int32" />
+    <Property Name="LyDo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuMuon" Relationship="thuvienModel.MaPM_FK1" FromRole="PhieuPhat" ToRole="PhieuMuon" />
+  </EntityType>
+  <EntityType Name="Sach">
+    <Key>
+      <PropertyRef Name="MaSach" />
+    </Key>
+    <Property Name="MaSach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSach" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenTG" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongTT" Type="Int32" Nullable="false" />
+    <Property Name="MaTL" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChiTietPhieuMuons" Relationship="thuvienModel.MaSach_FK" FromRole="Sach" ToRole="ChiTietPhieuMuon" />
+    <NavigationProperty Name="TheLoai" Relationship="thuvienModel.MaTL_FK" FromRole="Sach" ToRole="TheLoai" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="TaiKhoan1" />
+    </Key>
+    <Property Name="TaiKhoan1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoaiTK" Type="Int32" />
+    <NavigationProperty Name="LoaiTK1" Relationship="thuvienModel.LoaiTK_FK" FromRole="TaiKhoan" ToRole="LoaiTK" />
+    <NavigationProperty Name="NhanViens" Relationship="thuvienModel.TaiKhoan1_FK" FromRole="TaiKhoan" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="TheLoai">
+    <Key>
+      <PropertyRef Name="MaTL" />
+    </Key>
+    <Property Name="MaTL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Saches" Relationship="thuvienModel.MaTL_FK" FromRole="TheLoai" ToRole="Sach" />
+  </EntityType>
+  <EntityType Name="TheThuVien">
+    <Key>
+      <PropertyRef Name="MaDG" />
+    </Key>
+    <Property Name="MaDG" Type="Int32" Nullable="false" />
+    <Property Name="ThoiHan" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="DocGia" Relationship="thuvienModel.MaDG_FK" FromRole="TheThuVien" ToRole="DocGia" />
+    <NavigationProperty Name="PhieuMuons" Relationship="thuvienModel.MaDG_FK1" FromRole="TheThuVien" ToRole="PhieuMuon" />
+  </EntityType>
+  <EntityType Name="TrangThai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuMuons" Relationship="thuvienModel.Trangthai_FK" FromRole="TrangThai" ToRole="PhieuMuon" />
+  </EntityType>
+  <Association Name="MaPM_FK">
+    <End Type="thuvienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="0..1" />
+    <End Type="thuvienModel.ChiTietPhieuMuon" Role="ChiTietPhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuMuon">
+        <PropertyRef Name="MaPM" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuMuon">
+        <PropertyRef Name="MaPM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaSach_FK">
+    <End Type="thuvienModel.Sach" Role="Sach" Multiplicity="0..1" />
+    <End Type="thuvienModel.ChiTietPhieuMuon" Role="ChiTietPhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuMuon">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LoaiDG_FK">
+    <End Type="thuvienModel.LoaiDG" Role="LoaiDG" Multiplicity="1" />
+    <End Type="thuvienModel.DocGia" Role="DocGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiDG">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DocGia">
+        <PropertyRef Name="LoaiDG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaDG_FK">
+    <End Type="thuvienModel.DocGia" Role="DocGia" Multiplicity="1" />
+    <End Type="thuvienModel.TheThuVien" Role="TheThuVien" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DocGia">
+        <PropertyRef Name="MaDG" />
+      </Principal>
+      <Dependent Role="TheThuVien">
+        <PropertyRef Name="MaDG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaNguoi_FK2">
+    <End Type="thuvienModel.Nguoi" Role="Nguoi" Multiplicity="0..1" />
+    <End Type="thuvienModel.DocGia" Role="DocGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nguoi">
+        <PropertyRef Name="MaNguoi" />
+      </Principal>
+      <Dependent Role="DocGia">
+        <PropertyRef Name="MaNguoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LoaiTK_FK">
+    <End Type="thuvienModel.LoaiTK" Role="LoaiTK" Multiplicity="0..1" />
+    <End Type="thuvienModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiTK">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="LoaiTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Luachon_FK">
+    <End Type="thuvienModel.LuaChon" Role="LuaChon" Multiplicity="1" />
+    <End Type="thuvienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LuaChon">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PhieuMuon">
+        <PropertyRef Name="LuaChon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaNguoi1_FK">
+    <End Type="thuvienModel.Nguoi" Role="Nguoi" Multiplicity="0..1" />
+    <End Type="thuvienModel.NhanVien" Role="NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nguoi">
+        <PropertyRef Name="MaNguoi" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="MaNguoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaNV_FK">
+    <End Type="thuvienModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+    <End Type="thuvienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="PhieuMuon">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaiKhoan1_FK">
+    <End Type="thuvienModel.TaiKhoan" Role="TaiKhoan" Multiplicity="0..1" />
+    <End Type="thuvienModel.NhanVien" Role="NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="TaiKhoan1" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="TaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaDG_FK1">
+    <End Type="thuvienModel.TheThuVien" Role="TheThuVien" Multiplicity="0..1" />
+    <End Type="thuvienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheThuVien">
+        <PropertyRef Name="MaDG" />
+      </Principal>
+      <Dependent Role="PhieuMuon">
+        <PropertyRef Name="MaDG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaPM_FK1">
+    <End Type="thuvienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="0..1" />
+    <End Type="thuvienModel.PhieuPhat" Role="PhieuPhat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuMuon">
+        <PropertyRef Name="MaPM" />
+      </Principal>
+      <Dependent Role="PhieuPhat">
+        <PropertyRef Name="MaPM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Trangthai_FK">
+    <End Type="thuvienModel.TrangThai" Role="TrangThai" Multiplicity="1" />
+    <End Type="thuvienModel.PhieuMuon" Role="PhieuMuon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrangThai">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PhieuMuon">
+        <PropertyRef Name="TrangThai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaTL_FK">
+    <End Type="thuvienModel.TheLoai" Role="TheLoai" Multiplicity="1" />
+    <End Type="thuvienModel.Sach" Role="Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheLoai">
+        <PropertyRef Name="MaTL" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="MaTL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

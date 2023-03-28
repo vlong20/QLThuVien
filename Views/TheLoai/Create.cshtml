@@ -1,0 +1,42 @@
+﻿@model THPTPhuBinh.Models.TheLoai
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link rel="stylesheet" href="~/assets/css/base.css">
+    <link rel="stylesheet" href="~/assets/css/create.css">
+</head>
+<body>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4 class="title">Thêm thể loại</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group" style="margin-block-start: 4em;">
+                @Html.LabelFor(model => model.TenTL, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenTL, new { htmlAttributes = new { @class = "form-control input-box" } })
+                    @Html.ValidationMessageFor(model => model.TenTL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group" style="margin-top: 0px; grid-template-columns: 50% 50%;justify-content: flex-start;">
+                @Html.ActionLink("Back to List", "Index", new object {}, new { @class = "btn btn-default back-btn"})
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-default submit-btn" />
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>
